@@ -1,5 +1,6 @@
 package spring.security.api.config;
 
+import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -63,8 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+        corsConfiguration.setAllowedOrigins(ImmutableList.of("*")); // www - obligatory
+        corsConfiguration.setAllowedMethods(ImmutableList.of("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"));
+        corsConfiguration.setAllowCredentials(false);
+        corsConfiguration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type", "Origin", "Accept", "X-Requested-With", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+        corsConfiguration.setExposedHeaders(ImmutableList.of("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
         source.registerCorsConfiguration("/**", corsConfiguration);
 
         return source;
     }
+//
 }

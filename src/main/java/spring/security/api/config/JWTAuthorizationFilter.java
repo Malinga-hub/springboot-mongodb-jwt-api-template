@@ -25,12 +25,12 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException, IOException, ServletException {
         String header = req.getHeader(AppConfig.HEADER_STRING);
 
-        res.addHeader("Access-Control-Allow-Origin", "*");
-        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH, HEAD");
-        res.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-        res.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Allow-Credentials");
-        res.addHeader("Access-Control-Allow-Credentials", "true");
-        res.addIntHeader("Access-Control-Max-Age", 10);
+//        res.addHeader("Access-Control-Allow-Origin", "*");
+//        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH, HEAD");
+//        res.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+//        res.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Access-Control-Allow-Methods, Access-Control-Allow-Headers");
+//        res.addHeader("Access-Control-Allow-Credentials", "false");
+//        res.addIntHeader("Access-Control-Max-Age", 10);
 
         if (header == null || !header.startsWith(AppConfig.TOKEN_PREFIX)) {
             System.out.println("unauthorized access");
